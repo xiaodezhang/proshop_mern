@@ -29,6 +29,7 @@ import {
   orderListReducer,
 } from './reducers/orderReducers'
 
+/*slice : reducer*/
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
