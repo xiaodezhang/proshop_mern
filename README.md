@@ -1,126 +1,14 @@
-# ProShop eCommerce Platform
+It's been a long time since I worked in GitHub for my own hobby. Things changed during the time. I was married, moved from the big city to the city my parents and friends lived. I am 30, an awkward age cause I was more a loser than I should be.
+That's an inspiring summary. I completely understood my situation. So just let it go, Ok?
 
-> eCommerce platform built with the MERN stack & Redux.
+The store should be implemented in a short time. I prepared to change my insist to the software tec or something.
+现在列出一些需要完成的内容：
+1. 增加markdown的支持，商品添加markdown格式的商品描述文件
+2. 增加本土商品的内容
+3. 是否增加快递进度跟踪的功能？
+4. 一些UI的local修改
+5. 商品评价的添加功能修改
+6. 支付接口
+7. 部署
+事实上，整个网站的的工具链都是新的！我之前是用python写网站的，前端的react, redux也没有接触过，分布式的数据库mongoose没有使用过，已经花了大约两个星期来学习这些新工具的知识。到底能做到何种程度，我们拭目以待！
 
-This is the course project for my [MERN eCommerce From Scratch](https://www.udemy.com/course/mern-ecommerce) course
-
-![screenshot](https://github.com/bradtraversy/proshop_mern/blob/master/uploads/Screen%20Shot%202020-09-29%20at%205.50.52%20PM.png)
-
-## Features
-
-- Full featured shopping cart
-- Product reviews and ratings
-- Top products carousel
-- Product pagination
-- Product search feature
-- User profile with orders
-- Admin product management
-- Admin user management
-- Admin Order details page
-- Mark orders as delivered option
-- Checkout process (shipping, payment method, etc)
-- PayPal / credit card integration
-- Database seeder (products & users)
-
-## Note on Issues
-Please do not post issues here that are related to your own code when taking the course. Add those in the Udemy Q/A. If you clone THIS repo and there are issues, then you can submit
-
-## Usage
-
-### ES Modules in Node
-
-We use ECMAScript Modules in the backend in this project. Be sure to have at least Node v14.6+ or you will need to add the "--experimental-modules" flag.
-
-Also, when importing a file (not a package), be sure to add .js at the end or you will get a "module not found" error
-
-You can also install and setup Babel if you would like
-
-### Env Variables
-
-Create a .env file in then root and add the following
-
-```
-NODE_ENV = development
-PORT = 5000
-MONGO_URI = your mongodb uri
-JWT_SECRET = 'abc123'
-PAYPAL_CLIENT_ID = your paypal client id
-```
-
-### Install Dependencies (frontend & backend)
-
-```
-npm install
-cd frontend
-npm install
-```
-
-### Run
-
-```
-# Run frontend (:3000) & backend (:5000)
-npm run dev
-
-# Run backend only
-npm run server
-```
-
-## Build & Deploy
-
-```
-# Create frontend prod build
-cd frontend
-npm run build
-```
-
-There is a Heroku postbuild script, so if you push to Heroku, no need to build manually for deployment to Heroku
-
-### Seed Database
-
-You can use the following commands to seed the database with some sample users and products as well as destroy all data
-
-```
-# Import data
-npm run data:import
-
-# Destroy data
-npm run data:destroy
-```
-
-```
-Sample User Logins
-
-admin@example.com (Admin)
-123456
-
-john@example.com (Customer)
-123456
-
-jane@example.com (Customer)
-123456
-```
-
-
-## License
-
-The MIT License
-
-Copyright (c) 2020 Traversy Media https://traversymedia.com
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
