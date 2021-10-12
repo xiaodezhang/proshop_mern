@@ -153,7 +153,14 @@ const ProductScreen = ({ history, match }) => {
             </Col>
           </Row>
           <Row>
-            <ReactMarkdown children={markdown} remarkPlugins={[remarkGfm]} />
+            <ReactMarkdown 
+            children={markdown}
+            transformImageUri = { (uri) => 
+                uri.startsWith('http') ? uri : 
+                /*`http://localhost:5000/uploads/${uri}` }*/
+                `/uploads/${uri}` }
+            remarkPlugins={[remarkGfm]} 
+            />
           </Row>
           <Row>
             <Col md={6}>

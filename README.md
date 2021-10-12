@@ -15,3 +15,8 @@ The store should be implemented in a short time. I prepared to change my insist 
 
 - TODO:  <12-10-21, yourname> -
 * delete the markdown files
+
+  ![test for image](test.jpg "opt title")
+
+bug:  
+* delete all products on the second page, can not return to the page list screen.
