@@ -15,6 +15,7 @@ const ProductEditScreen = ({ match, history }) => {
   const [name, setName] = useState('')
   const [price, setPrice] = useState(0)
   const [image, setImage] = useState('')
+  const [descriptionMd, setDescriptionMd] = useState('')
   const [brand, setBrand] = useState('')
   const [category, setCategory] = useState('')
   const [countInStock, setCountInStock] = useState(0)
@@ -44,6 +45,7 @@ const ProductEditScreen = ({ match, history }) => {
         setName(product.name)
         setPrice(product.price)
         setImage(product.image)
+        setDescriptionMd(product.descriptionMd)
         setBrand(product.brand)
         setCategory(product.category)
         setCountInStock(product.countInStock)
@@ -75,6 +77,28 @@ const ProductEditScreen = ({ match, history }) => {
     }
   }
 
+  const uploadDescriptionMdHandler = async (e) => {
+    const file = e.target.files[0]
+    const formData = new FormData()
+    formData.append('descriptionMd', file)
+    setUploading(true)
+
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }
+
+      const { data } = await axios.post('/api/upload/descriptionMd', formData, config)
+
+      setDescriptionMd(data)
+      setUploading(false)
+    } catch (error) {
+      console.error(error)
+      setUploading(false)
+    }
+  }
   const submitHandler = (e) => {
     e.preventDefault()
     dispatch(
@@ -83,6 +107,7 @@ const ProductEditScreen = ({ match, history }) => {
         name,
         price,
         image,
+        descriptionMd,
         brand,
         category,
         description,
@@ -181,6 +206,23 @@ const ProductEditScreen = ({ match, history }) => {
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               ></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId='descriptionMd'>
+              <Form.Label>描述文档</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='输入描述文档路径'
+                value={descriptionMd}
+                onChange={(e) => setDescriptionMd(e.target.value)}
+              ></Form.Control>
+              <Form.File
+                id='descriptionMd-file'
+                label='选择文件'
+                custom
+                onChange={uploadDescriptionMdHandler}
+              ></Form.File>
+              {uploading && <Loader />}
             </Form.Group>
 
             <Button type='submit' variant='primary'>

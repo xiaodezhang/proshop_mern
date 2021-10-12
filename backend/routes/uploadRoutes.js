@@ -27,6 +27,18 @@ function checkFileType(file, cb) {
   }
 }
 
+function checkFileTypeDescription(file, cb) {
+  const filetypes = /md|octet-stream/
+  const extname = filetypes.test(path.extname(file.originalname).toLowerCase())
+  const mimetype = filetypes.test(file.mimetype)
+
+  if (extname && mimetype) {
+    return cb(null, true)
+  } else {
+    cb('Markdown only!')
+  }
+}
+
 const upload = multer({
   storage,
   fileFilter: function (req, file, cb) {
@@ -34,7 +46,18 @@ const upload = multer({
   },
 })
 
+const uploadDescription = multer({
+  storage,
+  fileFilter: function (req, file, cb) {
+    checkFileTypeDescription(file, cb)
+  },
+})
+
 router.post('/', upload.single('image'), (req, res) => {
+  res.send(`/${req.file.path}`)
+})
+
+router.post('/descriptionMd', uploadDescription.single('descriptionMd'), (req, res) => {
   res.send(`/${req.file.path}`)
 })
 

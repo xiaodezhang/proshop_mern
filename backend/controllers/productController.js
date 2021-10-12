@@ -1,5 +1,7 @@
 import asyncHandler from 'express-async-handler'
 import Product from '../models/productModel.js'
+import { promises } from 'fs';
+import path from 'path'
 
 // @desc    Fetch all products
 // @route   GET /api/products
@@ -68,6 +70,7 @@ const createProduct = asyncHandler(async (req, res) => {
     countInStock: 0,
     numReviews: 0,
     description: 'Sample description',
+    descriptionMd: '/',
   })
 
   const createdProduct = await product.save()
@@ -82,6 +85,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     name,
     price,
     description,
+    descriptionMd,
     image,
     brand,
     category,
@@ -89,6 +93,8 @@ const updateProduct = asyncHandler(async (req, res) => {
   } = req.body
 
   const product = await Product.findById(req.params.id)
+  const __dirname = path.resolve()
+  const markdown = await promises.readFile(path.join(__dirname, descriptionMd))
 
   if (product) {
     product.name = name
@@ -98,6 +104,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     product.brand = brand
     product.category = category
     product.countInStock = countInStock
+    product.descriptionMd = markdown
 
     const updatedProduct = await product.save()
     res.json(updatedProduct)

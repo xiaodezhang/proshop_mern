@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, Image, ListGroup, Card, Button, Form } from 'react-bootstrap'
@@ -31,6 +33,8 @@ const ProductScreen = ({ history, match }) => {
     loading: loadingProductReview,
     error: errorProductReview,
   } = productReviewCreate
+
+  const markdown = product.descriptionMd
 
   useEffect(() => {
     if (successProductReview) {
@@ -147,6 +151,9 @@ const ProductScreen = ({ history, match }) => {
                 </ListGroup>
               </Card>
             </Col>
+          </Row>
+          <Row>
+            <ReactMarkdown children={markdown} remarkPlugins={[remarkGfm]} />
           </Row>
           <Row>
             <Col md={6}>
