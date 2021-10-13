@@ -14,9 +14,9 @@ The store should be implemented in a short time. I prepared to change my insist 
 事实上，整个网站的的工具链都是新的！我之前是用python写网站的，前端的react, redux也没有接触过，分布式的数据库mongoose没有使用过，已经花了大约两个星期来学习这些新工具的知识。到底能做到何种程度，我们拭目以待！
 
 - TODO:  <12-10-21, yourname> -
+
 * delete the markdown files
 
-  ![test for image](test.jpg "opt title")
-
+![test for image](test.jpg "opt title")  
 bug:  
 * delete all products on the second page, can not return to the page list screen.
